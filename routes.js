@@ -18,12 +18,13 @@ module.exports = function(app, passport) {
 	app.use('/states', StateRoute);
 	app.use('/categories', CategoryRoute);
 
+	/* Specific routes
+	-------------------------------------*/
 
-	
 	app
 	/* USER
 	-------------------------------------*/
-	// view your profile (accessed at PUT http://localhost:8080/users/:id)
+	// view your profile (accessed at PUT http://localhost:8080/myprofile)
 	.get('/myprofile', passport.authenticate('basic', { session: false}),
 	function(req, res, next) {
 		User.findById(req.user.id,{}).populate('states').exec(function (err, post) {
@@ -32,7 +33,7 @@ module.exports = function(app, passport) {
 		});
 	})
 
-	// update your profile (accessed at PUT http://localhost:8080/users/:id)
+	// update your profile (accessed at PUT http://localhost:8080/updateprofile)
 	.put('/updateprofile', passport.authenticate('basic', { session: false}),
 	function(req, res, next) {
 		User.findByIdAndUpdate(req.user.id, req.body, function (err, post) {
@@ -42,7 +43,7 @@ module.exports = function(app, passport) {
 		});
 	})
 
-	// delete a user (accessed at DELETE http://localhost:8080/users/:id)
+	// delete your profile (accessed at DELETE http://localhost:8080/deleteprofile)
 	.delete('/deleteprofile', passport.authenticate('basic', { session: false}),
 	function(req, res, next) {
 		User.findByIdAndRemove(req.user.id, req.body, function (err, post) {
@@ -52,7 +53,7 @@ module.exports = function(app, passport) {
 		});
 	})
 
-	// create a user (accessed at POST http://localhost:8080/users)
+	// signup (accessed at POST http://localhost:8080/signup)
 	.post('/signup', function(req, res, next) {
 		User.create(req.body, function (err, post) {
 		if (err) return next(err);
@@ -61,28 +62,26 @@ module.exports = function(app, passport) {
 		});
 	});
 
-	/* USER
+	/* CATEGORY
 	-------------------------------------*/
+	// get all categories
 
-	// app.get('/logout', function(req, res) {
-	// 	req.logout();
-	// 	res.redirect('/');
-	// });
+	/* STATE
+	-------------------------------------*/
+	// post a status
 
-	// // process the login form
- //    app.post('/login', passport.authenticate('local-login', {
- //        successRedirect : '/users', // redirect to the secure profile section
- //        failureRedirect : '/fail', // redirect back to the signup page if there is an error
- //    }));
+	// get all states
+
+	/* NOTIFICATION
+	-------------------------------------*/
+	// receive notification ?
+
+	/* SETTINGS
+	-------------------------------------*/
+	// change languagesetting
+
+	// change notificationsetting
+
+	// change themesetting
 
 };
-
-// function isLoggedIn(req, res, next) {
-
-//     // if user is authenticated in the session, carry on 
-//     if (req.isAuthenticated())
-//     	return next();
-
-//     // if they aren't redirect them to the home page
-//     res.redirect('/');
-// }
