@@ -1,0 +1,34 @@
+//USER
+
+/api/users	GET	Get all the users.
+/api/users	POST	Create a user.
+/api/users/:user_id	GET	Get a single user.
+/api/users/:user_id	PUT	Update a user with new info.
+/api/users/:user_id	DELETE	Delete a user.
+
+
+//NOTIFICATION
+
+/api/notifications	GET	Get all the notifications.
+/api/notifications	POST	Create a notification.
+/api/notifications/:notification_id	GET	Get a single notification.
+/api/notifications/:notification_id	PUT	Update a notification with new info.
+/api/notifications/:notification_id	DELETE	Delete a notification.
+
+
+//STATE
+
+/api/states	GET	Get all the states.
+/api/states	POST	Create a state.
+/api/states/:state_id	GET	Get a single state.
+/api/states/:state_id	PUT	Update a state with new info.
+/api/states/:state_id	DELETE	Delete a state.
+
+
+//LOCATION
+
+/api/locations	GET	Get all the locations.
+/api/locations	POST	Create a location.
+/api/locations/:location_id	GET	Get a single location.
+/api/locations/:location_id	PUT	Update a location with new info.
+/api/locations/:location_id	DELETE	Delete a location.
