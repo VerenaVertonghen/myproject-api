@@ -4,7 +4,6 @@
   "author": "Verena Vertonghen <verena.vertonghen@gmail.com>",
   "main": "main.js",
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
     "start": "node main.js"
   },
   "dependencies": {
@@ -19,8 +18,7 @@
     "mongoose": "3.8",
     "passport": "^0.2.1",
     "passport-http": "^0.2.2",
-    "passport-local": "^1.0.0",
-    "node-pre-gyp": "0.6.7"
+    "passport-local": "^1.0.0"
   },
   "devDependencies":{
     "node-inspector": "^0.10.1",
