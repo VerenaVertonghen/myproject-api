@@ -1,0 +1,7 @@
+---
+applications:
+- name: caretaker
+  host: caretaker
+  path: .
+  memory: 128M
+  command: node main.js

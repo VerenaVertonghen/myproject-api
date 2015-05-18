@@ -13,6 +13,13 @@ var configDB = require('./config/database.js');
 var port = process.env.PORT || 8080; // set our port
 var mongoose = require('mongoose');
 
+// cfenv provides access to your Cloud Foundry environment
+// for more info, see: https://www.npmjs.com/package/cfenv
+var cfenv = require('cfenv');
+
+// get the app environment from Cloud Foundry
+var appEnv = cfenv.getAppEnv();
+
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({
@@ -43,5 +50,11 @@ require('./routes.js')(app, passport);
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
-console.log('Magic happens on port ' + port);
+// app.listen(port);
+// console.log('Magic happens on port ' + port);
+// start server on the specified port and binding host
+app.listen(appEnv.port, appEnv.bind, function() {
+
+	// print a message when the server starts listening
+  console.log("server starting on " + appEnv.url);
+});

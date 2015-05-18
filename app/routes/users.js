@@ -44,4 +44,34 @@ router
             return res.send('You are not allowed to get a users.');
         }
     })
+    /*ADMIN*/
+    // update a user (accessed at PUT http://localhost:8080/users/:id)
+    .put('/:id', passport.authenticate('basic', {
+        session: false
+    }), function(req, res, next) {
+        if (req.user.role == "admin") {
+            User.findByIdAndUpdate(req.params.id, req.body, function(
+                err, post) {
+                if (err) return next(err);
+                res.json(post);
+            });
+        } else {
+            return res.send('You are not allowed to update a user.');
+        }
+    })
+    /*ADMIN*/
+    // delete a user (accessed at DELETE http://localhost:8080/users/:id)
+    .delete('/:id', passport.authenticate('basic', {
+        session: false
+    }), function(req, res, next) {
+        if (req.user.role == "admin") {
+            User.findByIdAndRemove(req.params.id, req.body, function(
+                err, post) {
+                if (err) return next(err);
+                res.json(post);
+            });
+        } else {
+            return res.send('You are not allowed to delete a user.');
+        }
+    });
 module.exports = router;

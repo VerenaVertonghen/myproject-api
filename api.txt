@@ -1,3 +1,5 @@
+--> swagger
+
 //USER
 
 /api/users	GET	Get all the users.
@@ -32,3 +34,9 @@
 /api/locations/:location_id	GET	Get a single location.
 /api/locations/:location_id	PUT	Update a location with new info.
 /api/locations/:location_id	DELETE	Delete a location.
+
+//local url
+'url' : 'mongodb://localhost/myproject' 
+
+//bluemix
+'url' : 'caretaker.eu-gb.mybluemix.net'

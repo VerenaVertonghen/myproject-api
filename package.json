@@ -1,20 +1,29 @@
 {
-  "name": "node-api",
-  "main": "server.js",
+  "name": "caretaker",
+  "description": "An api for the caretaker application.",
+  "author": "Verena Vertonghen <verena.vertonghen@gmail.com>",
+  "main": "main.js",
+  "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build",
+    "start": "node main.js"
+  },
   "dependencies": {
     "bcrypt-nodejs": "latest",
     "body-parser": "^1.0.2",
-    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.3.4",
-    "express": "~4.0.0",
+    "express": "4.12.x",
+    "cfenv": "1.0.x",
     "express-session": "^1.11.2",
     "method-override": "^2.3.3",
     "mongo-migrate": "^0.1.0",
     "mongoose": "3.8",
-    "morgan": "^1.5.3",
-    "node-inspector": "^0.10.1",
     "passport": "^0.2.1",
     "passport-http": "^0.2.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "node-pre-gyp": "0.6.7"
+  },
+  "devDependencies":{
+    "node-inspector": "^0.10.1",
+    "morgan": "^1.5.3"
   }
 }
