@@ -1,7 +1,8 @@
 ---
 applications:
-- name: caretaker
-  host: caretaker
+- name: careapp
+  host: careapp
   path: .
   memory: 128M
   command: node main.js
+  instances: 1

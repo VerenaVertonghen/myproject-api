@@ -1,5 +1,5 @@
 {
-  "name": "caretaker",
+  "name": "careapp",
   "description": "An api for the caretaker application.",
   "author": "Verena Vertonghen <verena.vertonghen@gmail.com>",
   "main": "main.js",
@@ -18,10 +18,9 @@
     "mongoose": "3.8",
     "passport": "^0.2.1",
     "passport-http": "^0.2.2",
-    "passport-local": "^1.0.0"
-  },
-  "devDependencies":{
-    "node-inspector": "^0.10.1",
-    "morgan": "^1.5.3"
+    "passport-local": "^1.0.0",
+    "connect-flash": "^0.1.1",
+    "morgan": "^1.5.3",
+    "node-inspector": "^0.10.1"
   }
 }
