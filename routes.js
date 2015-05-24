@@ -6,8 +6,10 @@ module.exports = function(app, passport) {
 	var NotificationRoute   = require('./app/routes/notifications');
 	var StateRoute          = require('./app/routes/states');
 	var CategoryRoute       = require('./app/routes/categories');
-	var mongoose = require('mongoose');
+	var mongoose 			= require('mongoose');
+	var async = require('async')
 
+	var Category = require('./app/models/category.js');
 	var User = require('./app/models/user.js');
 	var State = require('./app/models/state.js');
 	
@@ -42,6 +44,7 @@ module.exports = function(app, passport) {
 	// change themesetting
 	.put('/updateprofile', passport.authenticate('basic', { session: false}),
 		function(req, res, next) {
+			console.log(req.body);
 			User.findByIdAndUpdate(req.user.id, req.body, function (err, post) {
 				if (err) return next(err);
 				res.json(post);
@@ -70,29 +73,45 @@ module.exports = function(app, passport) {
 
 	/* STATE
 	-------------------------------------*/
-	// submit a state
-	.post('/submitstate', passport.authenticate('basic', { session: false}),
-		function(req, res, next) {
-			User.findById(req.user.id,{}).exec(function (err, user) {
+	.post('/addstatetouser', passport.authenticate('basic', { session: false}),
+	function(req, res, next) {
+		State.findById(req.body.state, function(err, post) {
+			console.log('finding state', post);
+			if (err) return next(err);
+
+			User.findByIdAndUpdate(req.user.id, { $push: {"states": post._id}}, {  safe: true, upsert: true} , function (err, post) {
 				if (err) return next(err);
-				user.states.push(req.body.state);
-				user.save(function (err) {
-					if (err) return next(err);
-					res.json(user);
-				}); 
-
+				res.json(post);
 			});
-		})
-
-
+		});
+	})
 
 	// get all your states (accessed at GET http://localhost:8080/states)
 	.get('/mystates', passport.authenticate('basic', {
 		session: false
 	}), function(req, res, next) {
-		User.findById(req.user.id,{}).populate('states').exec(function (err, post) {
+		User.findById(req.user.id,{}).populate('states').populate('states.category').exec(function (err, user) {
 			if (err) return next(err);
-			res.json(post.states);  
+			var modifiedStates = [];
+			async.forEach(user.states, function(state,callback) {
+				console.log("modifying" + state);
+				State.populate(
+					state,
+					{ "path": "category" },
+					function(err,output) {
+						if (err) {
+							throw err;
+						}
+						console.log("pushing " + output);
+						modifiedStates.push(output);
+						callback();
+					}
+					);
+			},function(err) {
+				if (err) console.log( err );
+				res.json(modifiedStates);
+			});
+
 		});
 	});
 

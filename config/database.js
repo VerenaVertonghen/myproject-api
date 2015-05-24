@@ -1,5 +1,6 @@
 module.exports = {
 
-    'url' : 'mongodb://8d585f45-ac16-4251-ad1b-64e2f14127f6:d7bb5788-f40d-4173-89ab-2d95c4578901@159.8.128.78:10119/db' 
+    'url' : 'mongodb://fb25c305-68cb-44e1-91c8-17355a599287:511f7bc5-a605-4b2e-9677-7d1712343bae@159.8.128.201:10387/db' 
+    //'url' : 'mongodb://localhost/careapp' 
 
 };

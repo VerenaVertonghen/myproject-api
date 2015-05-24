@@ -1,7 +1,7 @@
 ---
 applications:
-- name: careapp
-  host: careapp
+- name: careapp2
+  host: careapp2
   path: .
   memory: 128M
   command: node main.js

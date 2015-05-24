@@ -50,11 +50,15 @@ require('./routes.js')(app, passport);
 
 // START THE SERVER
 // =============================================================================
-// app.listen(port);
-// console.log('Magic happens on port ' + port);
-// start server on the specified port and binding host
-app.listen(appEnv.port, appEnv.bind, function() {
+ 
+	//localhost
+	// =============================================================================
+	// app.listen(port);
+	// console.log('Magic happens on port ' + port);
 
-	// print a message when the server starts listening
-  console.log("server starting on " + appEnv.url);
-});
+	//bluemix
+	// =============================================================================
+	app.listen(appEnv.port, appEnv.bind, function() {
+		// print a message when the server starts listening
+  		console.log("server starting on " + appEnv.url);
+	});

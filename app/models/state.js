@@ -4,7 +4,7 @@ var Category = require('./category.js');
 var StateSchema = new Schema({
     text: {
         type: String,
-        required: true
+        required: false
     },
     category: {
         type: Schema.Types.ObjectId,
