@@ -31,20 +31,26 @@ router
             res.json(post);
         });
     })
-    /*ADMIN*/
+    /*USER*/
     // get a state (accessed at GET http://localhost:8080/states/:id)
+    // .get('/:id', passport.authenticate('basic', {
+    //     session: false
+    // }), function(req, res, next) {
+    //         State.findById(req.params.id, function(err, post) {
+    //             if (err) return next(err);
+    //             res.json(post);
+    //         });
+    // })
+
     .get('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
-        if (req.user.role == "admin") {
-            State.findById(req.params.id, function(err, post) {
+            State.findById(req.params.id,{}).populate('category').exec(function(err, post) {
                 if (err) return next(err);
                 res.json(post);
             });
-        } else {
-            return res.send('You are not allowed to get a state.');
-        }
     })
+
     /*USER*/
     // delete a state (accessed at DELETE http://localhost:8080/states/:id)
     .delete('/:id', passport.authenticate('basic', {

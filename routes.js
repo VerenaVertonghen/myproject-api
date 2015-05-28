@@ -90,7 +90,7 @@ module.exports = function(app, passport) {
 	.get('/mystates', passport.authenticate('basic', {
 		session: false
 	}), function(req, res, next) {
-		User.findById(req.user.id,{}).populate('states').populate('states.category').exec(function (err, user) {
+		User.findById(req.user.id,{}).populate('states').exec(function (err, user) {
 			if (err) return next(err);
 			var modifiedStates = [];
 			async.forEach(user.states, function(state,callback) {
