@@ -13,7 +13,7 @@ router
         session: false
     }), function(req, res, next) {
         if (req.user.role == "admin") {
-            Notification.find(function(err, notifications) {
+            Notification.find({}).populate('category').exec(function(err, notifications) {
                 if (err) return next(err);
                 res.json(notifications);
             });

@@ -12,6 +12,7 @@ module.exports = function(app, passport) {
 	var Category = require('./app/models/category.js');
 	var User = require('./app/models/user.js');
 	var State = require('./app/models/state.js');
+	var Notification = require('./app/models/notification.js');
 	
 	var passport = require('passport');
 	var express = require('express');
@@ -113,10 +114,81 @@ module.exports = function(app, passport) {
 			});
 
 		});
-	});
+	})
+
+	//category up id 5561a84b6733b1b40a50ee41
+	//category down id 5561a8676733b1b40a50ee42
+
+	// Notification.find({}).populate('category').where('category.name').equals(req.params.catid)
+	// Notification.find({}).populate('category').where(req.params.catid).equals('category._id')
 
 	/* NOTIFICATION
 	-------------------------------------*/
-	// receive notification ?
 
+	.get('/randomnotification', passport.authenticate('basic', { session: false}),
+	function(req, res, next) {
+		Notification.count({},function(err,count){
+			if (err) return handleError(err);
+
+			console.log('count',count);
+			var randomNumber = Math.floor((Math.random() * count));
+			console.log('randomNumber',randomNumber);
+			Notification.find({}).limit(-1).skip(randomNumber).populate('category').exec(function (err, notifications) {
+				if (err) return next(err);
+				res.json(notifications);  
+			});	
+		});	
+	})
+
+	.get('/notificationsbycategory/:catid', passport.authenticate('basic', { session: false}),
+	function(req, res, next) {
+		console.log("req.params.catid",req.params.catid);
+		console.log("req.params.type",req.params.type);
+
+		Notification.find({}).where('category').equals(req.params.catid).populate('category')
+		.exec(function (err, notifications) {
+			if (err) return next(err);
+
+			console.log(notifications);
+			console.log('count',notifications.length);
+			var randomNumber = Math.floor((Math.random() * (notifications.length) ));
+			console.log('randomNumber',randomNumber);
+			res.json(notifications[randomNumber]);  	
+		});
+	})
+
+	.get('/notificationsbytype/:type', passport.authenticate('basic', { session: false}),
+	function(req, res, next) {
+		console.log("req.params.catid",req.params.catid);
+		console.log("req.params.type",req.params.type);
+
+		Notification.find({}).where('type').equals(req.params.type).populate('category')
+		.exec(function (err, notifications) {
+			if (err) return next(err);
+
+			console.log(notifications);
+			console.log('count',notifications.length);
+			var randomNumber = Math.floor((Math.random() * (notifications.length) ));
+			console.log('randomNumber',randomNumber);
+			res.json(notifications[randomNumber]);  	
+		});
+	})
+
+	.get('/notificationsbycategory/:catid/type/:type', passport.authenticate('basic', { session: false}),
+	function(req, res, next) {
+		console.log("req.params.catid",req.params.catid);
+		console.log("req.params.type",req.params.type);
+
+		Notification.find({}).where('category').equals(req.params.catid).where('type').equals(req.params.type).populate('category')
+		.exec(function (err, notifications) {
+			if (err) return next(err);
+
+			console.log(notifications);
+			console.log('count',notifications.length);
+			var randomNumber = Math.floor((Math.random() * (notifications.length) ));
+			console.log('randomNumber',randomNumber);
+			res.json(notifications[randomNumber]);  	
+		});
+	})
+	;
 };
