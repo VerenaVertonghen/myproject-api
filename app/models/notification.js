@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Category = require('./category.js');
-var types = 'story quote advice question reminder'.split(' ');
+var types = 'quote advice question reminder'.split(' ');
 var NotificationSchema = new Schema({
     title: {
         type: String,

@@ -1,7 +1,26 @@
-{
-    "_id": "5558ea382fb6f468065ce701",
-    "title": "Feeling happy?",
-    "text": "Try to make someone's day a happy one!",
-    "category": "5555c0a2cfd1b41206000001",
-    "__v": 0
-}
+[
+    {
+        "title": "Noty 1",
+        "text": "First notification!! Woohoo!",
+        "type": "reminder",
+        "category": "5560c45552a4901f0089debc"
+    },
+    {
+        "title": "Noty 2",
+        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
+        "type": "advice",
+        "category":"556209ec618b781f003f4626"
+    },
+    {
+        "title": "Noty 5",
+        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
+        "type": "advice",
+        "category": "556209c2618b781f003f4622"
+    },
+    {
+        "title": "Noty 4",
+        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
+        "type": "advice",
+        "category": "556209d6618b781f003f4624"
+    }
+]
