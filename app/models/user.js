@@ -5,11 +5,13 @@ var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 // enums
 var roles = 'admin user'.split(' ');
-var notifications = 'rarely normal often'.split(' ');
+var notificationsenum = 'rarely normal often'.split(' ');
 var languages = 'english nederlands français'.split(' ');
 var themes = 'light dark colour'.split(' ');
 // load state model
 var State = require('./state.js');
+var Notification = require('./notification.js');
+
 // create a schema
 var UserSchema = new Schema({
     firstname: {
@@ -46,9 +48,14 @@ var UserSchema = new Schema({
         ref: 'State',
         required: false
     }],
+    notifications: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Notification',
+        required: false
+    }],
     notificationsetting: {
         type: String,
-        enum: notifications,
+        enum: notificationsenum,
         default: 'normal',
         required: false
     },
