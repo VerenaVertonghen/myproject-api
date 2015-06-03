@@ -1,26 +1,19 @@
+/*APP NOTIFICATIONS */
 [
     {
-        "title": "Noty 1",
-        "text": "First notification!! Woohoo!",
-        "type": "reminder",
-        "category": "5560c45552a4901f0089debc"
+        "__v": 0,
+        "title": "Welcome!",
+        "text": "This is your first notification. Thank you for trying out our app. I hope you will enjoy using it!",
+        "type": "app",
+        "category": "556d74b59def091f003bab65",
+        "_id": "556d7a25a198311f0033d3fb"
     },
     {
-        "title": "Noty 2",
-        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
-        "type": "advice",
-        "category":"556209ec618b781f003f4626"
-    },
-    {
-        "title": "Noty 5",
-        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
-        "type": "advice",
-        "category": "556209c2618b781f003f4622"
-    },
-    {
-        "title": "Noty 4",
-        "text": "Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.Some advice for you.",
-        "type": "advice",
-        "category": "556209d6618b781f003f4624"
+        "__v": 0,
+        "title": "Cleaned up for you!",
+        "text": "We removed all your notifications.",
+        "type": "app",
+        "category": "556d74b59def091f003bab65",
+        "_id": "556d7d82a198311f0033d3fd"
     }
 ]

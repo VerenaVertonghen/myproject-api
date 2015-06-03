@@ -1,6 +1,6 @@
 module.exports = {
 
-    'url' : 'mongodb://dc260009-c6a9-4074-969a-92e2a9330d61:e1b2a85b-733b-48b5-931a-d1661b51c2e7@159.8.128.201:10396/db' 
-    //'url' : 'mongodb://localhost/careapp' 
+    'url' : 'mongodb://1e3427ce-aebf-4ae1-91ae-e01cfa1f17e5:d33eb797-f686-490e-834a-d12f41c2e326@159.8.128.54:10184/db' 
+    //'url' : 'mongodb://localhost/cosycare' 
 
 };

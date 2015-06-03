@@ -1,6 +1,6 @@
 {
-  "name": "careapp",
-  "description": "An api for the caretaker application.",
+  "name": "cosycare",
+  "description": "An api for the cosycare application.",
   "author": "Verena Vertonghen <verena.vertonghen@gmail.com>",
   "main": "main.js",
   "scripts": {
