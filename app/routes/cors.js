@@ -9,11 +9,10 @@ router.use(bodyParser.urlencoded({
 // log all requests
 router.all('*', function(req, res, next){
 	console.log('router');
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header("Access-Control-Allow-Headers", "X-Requested-With, Origin, Content-Type, Authorization, Accept");
-   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    //req.logger.info("Received request to " + req.url);
-    next();
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With, Origin, Content-Type, Authorization, Accept");
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+	next();
 });
 
 module.exports = exports = router;

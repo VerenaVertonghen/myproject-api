@@ -33,15 +33,6 @@ router
     })
     /*USER*/
     // get a state (accessed at GET http://localhost:8080/states/:id)
-    // .get('/:id', passport.authenticate('basic', {
-    //     session: false
-    // }), function(req, res, next) {
-    //         State.findById(req.params.id, function(err, post) {
-    //             if (err) return next(err);
-    //             res.json(post);
-    //         });
-    // })
-
     .get('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {

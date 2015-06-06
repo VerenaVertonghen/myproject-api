@@ -18,18 +18,8 @@ var allowCrossDomain = function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With, Origin, Content-Type, Accept, Authorization");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-
     next();
 }
-
-// app.configure(function() {
-//     // app.use(express.bodyParser());
-//     // app.use(express.cookieParser());
-//     // app.use(express.session({ secret: 'cool beans' }));
-//     // app.use(express.methodOverride());
-//     app.use(allowCrossDomain);
-//     // app.use(app.router);
-// });
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv

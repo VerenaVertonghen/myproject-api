@@ -36,19 +36,16 @@ router
             return res.send('You are not allowed to create a notification.');
         }
     })
-    /*ADMIN*/
+    /*USER*/
     // get a notification (accessed at GET http://localhost:8080/notifications/:id)
     .get('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
-        if (req.user.role == "admin") {
-            Notification.findById(req.params.id, function(err, post) {
-                if (err) return next(err);
-                res.json(post);
-            });
-        } else {
-            return res.send('You are not allowed to get a notification.');
-        }
+        Notification.findById(req.params.id, {}).populate('category').exec(
+            function(err, post) {
+            if (err) return next(err);
+            res.json(post);
+        });
     })
     /*ADMIN*/
     // update a notification (accessed at PUT http://localhost:8080/notifications/:id)
