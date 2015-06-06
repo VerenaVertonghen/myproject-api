@@ -1,5 +1,8 @@
 # API
 
+##Intro
+The api for Cosy Care.
+
 ##Setup
 ```sh
 $ npm install
@@ -11,13 +14,9 @@ $ node-debug server.js
 ```
 
 ##Technology
-API uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
 * [node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework [@tjholowaychuk]
 * [Passportjs] - authentication middleware for Node.js
-* [MongoDB] - an open-source document database, and the leading NoSQL database
 * [Mongoose] - elegant mongodb object modeling for node.js
 
 ##Routes
@@ -28,7 +27,7 @@ API uses a number of open source projects to work properly:
 * /states
 
 ##Version
-V1
+V1.0
 
 [node.js]:http://nodejs.org
 [express]:http://expressjs.com
