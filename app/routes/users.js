@@ -18,7 +18,7 @@ router
                 res.json(users);
             });
         } else {
-            return res.send('You are not allowed to get all the users.');
+            return res.status(403).send('You are not allowed to get all the users.');
         }
     })
     /*ANYONE*/
@@ -41,7 +41,7 @@ router
                     res.json(post);
                 });
         } else {
-            return res.send('You are not allowed to get a users.');
+            return res.status(403).send('You are not allowed to get a users.');
         }
     })
     /*ADMIN*/
@@ -56,7 +56,7 @@ router
                 res.json(post);
             });
         } else {
-            return res.send('You are not allowed to update a user.');
+            return res.status(403).send('You are not allowed to update a user.');
         }
     })
     /*ADMIN*/
@@ -71,7 +71,7 @@ router
                 res.json(post);
             });
         } else {
-            return res.send('You are not allowed to delete a user.');
+            return res.status(403).send('You are not allowed to delete a user.');
         }
     });
 module.exports = router;

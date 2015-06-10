@@ -1,79 +1,79 @@
-// on routes that end in /notifications
+// on routes that end in /messages
 // ----------------------------------------------------
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var passport = require('passport');
-var Notification = require('../models/notification.js');
+var Message = require('../models/message.js');
 
 router
     /*ADMIN*/
-    // get all the notifications (accessed at GET http://localhost:8080/notifications)
+    // get all the messages (accessed at GET http://localhost:8080/messages)
     .get('/', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
         if (req.user.role == "admin") {
-            Notification.find({}).populate('category').exec(function(err, notifications) {
+            Message.find({}).exec(function(err, messages) {
                 if (err) return next(err);
-                res.json(notifications);
+                res.json(messages);
             });
         } else {
-            return res.status(403).send('You are not allowed to get all the notifications.');
+            return res.status(403).send('You are not allowed to get all the messages.');
         }
     })
     /*ADMIN*/
-    // create a notification (accessed at POST http://localhost:8080/notifications)
+    // create a message (accessed at POST http://localhost:8080/messages)
     .post('/', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
         if (req.user.role == "admin") {
-            Notification.create(req.body, function(err, post) {
+            Message.create(req.body, function(err, post) {
                 if (err) return next(err);
                 res.json(post);
             });
         } else {
-            return res.status(403).send('You are not allowed to create a notification.');
+            return res.status(403).send('You are not allowed to create a message.');
         }
     })
     /*USER*/
-    // get a notification (accessed at GET http://localhost:8080/notifications/:id)
+    // get a message (accessed at GET http://localhost:8080/messages/:id)
     .get('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
-        Notification.findById(req.params.id, {}).populate('category').exec(
+        Message.findById(req.params.id, {}).populate('category').exec(
             function(err, post) {
             if (err) return next(err);
             res.json(post);
         });
     })
     /*ADMIN*/
-    // update a notification (accessed at PUT http://localhost:8080/notifications/:id)
+    // update a message (accessed at PUT http://localhost:8080/messages/:id)
     .put('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
         if (req.user.role == "admin") {
-            Notification.findByIdAndUpdate(req.params.id, req.body,
+            Message.findByIdAndUpdate(req.params.id, req.body,
                 function(err, post) {
                     if (err) return next(err);
                     res.json(post);
                 });
         } else {
-            return res.status(403).send('You are not allowed to update a notification.');
+            return res.status(403).send('You are not allowed to update a message.');
         }
     })
     /*ADMIN*/
-    // delete a notification (accessed at DELETE http://localhost:8080/notifications/:id)
+    // delete a message (accessed at DELETE http://localhost:8080/messages/:id)
     .delete('/:id', passport.authenticate('basic', {
         session: false
     }), function(req, res, next) {
         if (req.user.role == "admin") {
-            Notification.findByIdAndRemove(req.params.id, req.body,
+            Message.findByIdAndRemove(req.params.id, req.body,
                 function(err, post) {
                     if (err) return next(err);
                     res.json(post);
                 });
         } else {
-            return res.status(403).send('You are not allowed to delete a notification.');
+            return res.status(403).send('You are not allowed to delete a message.');
         }
     });
 module.exports = router;

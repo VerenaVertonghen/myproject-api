@@ -18,7 +18,7 @@ router
                 res.json(states);
             });
         } else {
-            return res.send('You are not allowed to get all the states.');
+            return res.status(403).send('You are not allowed to get all the states.');
         }
     })
     /*USER*/

@@ -29,7 +29,7 @@ router
                 //res.json({ message: 'Category created!' });
             });
         } else {
-            return res.send('You are not allowed to create a category.');
+            return res.status(403).send('You are not allowed to create a category.');
         }
     })
     /*USER*/
@@ -55,7 +55,7 @@ router
                 //res.json({ message: 'Category updated!' });
             });
         } else {
-            return res.send('You are not allowed to update a category.');
+            return res.status(403).send('You are not allowed to update a category.');
         }
     })
     /*ADMIN*/
@@ -71,7 +71,7 @@ router
                 //res.json({ message: 'Category deleted!' });
             });
         } else {
-            return res.send('You are not allowed to delete a category.');
+            return res.status(403).send('You are not allowed to delete a category.');
         }
     });
 module.exports = router;
