@@ -27,7 +27,6 @@ var cfenv = require('cfenv');
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
-
 app.use(allowCrossDomain);
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -45,7 +44,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 mongoose.connect(configDB.url, function(err) {
     if (err) {
         console.log('connection error', err);
@@ -53,22 +51,19 @@ mongoose.connect(configDB.url, function(err) {
         console.log('connection successful');
     }
 });
-
 require('./config/passport')(passport); // pass passport for configuration
 require('./routes.js')(app, passport);
 app.use(require('./app/routes/cors'));
 
 // START THE SERVER
 // =============================================================================
- 
-	//localhost
-	// =============================================================================
-	// app.listen(port);
-	// console.log('Magic happens on port ' + port);
-
-	//bluemix
-	// =============================================================================
-	app.listen(appEnv.port, appEnv.bind, function() {
-		// print a message when the server starts listening
-  		console.log("server starting on " + appEnv.url);
-	});
+//localhost
+// =============================================================================
+// app.listen(port);
+// console.log('Magic happens on port ' + port);
+//bluemix
+// =============================================================================
+app.listen(appEnv.port, appEnv.bind, function() {
+    // print a message when the server starts listening
+    console.log("server starting on " + appEnv.url);
+});
